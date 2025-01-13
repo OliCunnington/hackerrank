@@ -19,10 +19,10 @@ import sys
 def beautifulDays(i, j, k):
     # Write your code here
     # r = [i..j]
-    # tup = [(x, int(str(x).reversed())) for x in r]
-    # return len([x[0] where (x[0]-x[1]) % k == 0 for x in r])
-    pass
-
+    r = range(i, j+1)
+    tup = [(x, int(str(x)[::-1])) for x in r]
+    return len([x for x in tup if (x[0]-x[1]) % k == 0])
+    
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
