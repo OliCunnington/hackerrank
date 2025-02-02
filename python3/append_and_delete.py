@@ -25,13 +25,13 @@ def appendAndDelete(s, t, k):
             sim += 1
         else:
             break
-    # len(s) - sim + len(t) - sim <= k -> Yes
-    # else No
-    # ??
-    return "Yes" if (len(s) + len(t) - (2* sim)) <= k else "No"
-    
-    ## oh wait no, "the exact number of operations that must be performed"
-    ## so the operations, with an even remainder?
+    ops = len(s) + len(t) - (2* sim)
+ 
+    # this checks if you have enough operations, and then the remaining operations
+    # are even, allowing add/remove or remove/add operation pairs...   
+    return "Yes" if  ops <= k and (k - ops) % 2 == 0 else "No"
+    # still doesnt like it...
+ 
         
 
 if __name__ == '__main__':
