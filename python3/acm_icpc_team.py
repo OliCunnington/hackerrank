@@ -14,15 +14,30 @@ import sys
 #
 
 def acmTeam(topic):
-    # Write your code here
-    pass
-    # either
-    #   -merge lists with OR
-    #   -count(1)
-    #   -return count(max(counts))
-    # or
-    #   - list comp lists with either == 1
-    #   - return count(max(len(comped-lists)))
+    
+    # generate list of pairs / teams
+    teams = [(x, y) for x in topic for y in topic if x != y and topic.index(x) < topic.index(y)]
+    # this gives a list of tupples, that contain the known subjects string of both team members
+    # [([],[]), ...]
+    
+    teams_merged = []
+    # merge teams lists
+    for team in teams:
+        _team = []
+        # team is tupple of string
+        for i in range(len(team[0])):
+            _team.append(1) if (team[0][i] == "1" or team[1][i] == "1") else _team.append(0)
+        teams_merged.append(_team)
+    
+    # teams_merged now contains list of (int) for each known subject
+    
+    # count known subjects per team
+    teams_known = [x.count(1) for x in teams_merged]
+    
+    # return [max value, count of max value] in teams_known
+    return [max(teams_known), teams_known.count(max(teams_known))]
+    
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
