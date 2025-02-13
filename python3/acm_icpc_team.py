@@ -46,7 +46,7 @@ def acmTeam(topic):
                 if (topic[i][k] == "1" or topic[j][k] == "1"):
                     _team += 1
             looped_team.append(_team)
-        return [max(looped_team), looped_team.count(max(looped_team))]            
+    return [max(looped_team), looped_team.count(max(looped_team))]            
                 
             
 
