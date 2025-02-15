@@ -3,8 +3,16 @@
 from collections import Counter
 import os
 
-def get_profit(number_of_shoes, shoe_sizes, number_of_customers, desired_size_and_price):
-    return [number_of_shoes, shoe_sizes, number_of_customers, desired_size_and_price]
+def get_profit(shoe_sizes, desired_size_and_price):
+    # return [shoe_sizes, desired_size_and_price]
+    counter = Counter(shoe_sizes)
+    profit = 0
+    for x, y in desired_size_and_price:
+        if counter[x] > 0:
+            counter[x] -= 1
+            profit += y
+    return profit
+            
 
 
 if __name__ == '__main__':
@@ -14,17 +22,15 @@ if __name__ == '__main__':
 
     shoe_sizes_input = [int(x) for x in input().split(" ")] 
     
-    number_of_customers_input = int(input()) 
-    
     desired_size_and_price_input = []
-    for c in range(number_of_customers_input):
+    for c in range(int(input())):
         size_price_str = input().split()
         desired_size_and_price_input.append((int(size_price_str[0]), int(size_price_str[1])))
 
 
-    result = get_profit(number_of_shoes_input, shoe_sizes_input, number_of_customers_input, desired_size_and_price_input)
+    result = get_profit(shoe_sizes_input, desired_size_and_price_input)
     
-    fptr.write('\n'.join(map(str, result)))
+    fptr.write(str(result))
     fptr.write('\n')
 
     fptr.close()
