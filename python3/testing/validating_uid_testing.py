@@ -17,7 +17,6 @@ total = int(inp.readline())
 for i in range(total):
     # ^(?=.*[A-Z])(?!.*(\d).*\1)(?!.*([a-zA-Z]).*\2)[a-zA-Z0-9-]{10}$
     # ^(?=.*[A-Z])(?=.*\d)(?!.*(.).*\1)[a-zA-Z0-9-]{10}$
-    # ^(?=.*[A-Z].*[A-Z])(?=.*\d.*\d.*\d)[A-Za-z\d]{10}$
     testcase = inp.readline()
     match_case = t.readline()
     if re.match(r"^(?=.*[A-Z])(?=.*\d)(?!.*(.).*\1)[a-zA-Z0-9-]{10}$", testcase):
