@@ -1,2 +1,8 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
-print(*[chr(x) for x in [52, 53, 176]], sep="")
+import math
+
+
+AB = int(input())
+BC = int(input())
+MBC = round(math.atan(AB/BC) * 180/math.pi)
+print(MBC, chr(176), sep="")
