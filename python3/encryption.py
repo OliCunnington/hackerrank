@@ -18,10 +18,12 @@ def encryption(s):
     r = math.floor(math.sqrt(len(s)))
     c = math.ceil(math.sqrt(len(s)))
     res = ""
-    for i in range(r + 1):
+    if r != c:
+        r +=1
+    for i in range(r):
         for j in range(c):
             ind = i + j*c
-            print(ind)
+            # print(ind)
             if ind < len(s):  
                 res += s[ind]
         res += " "
