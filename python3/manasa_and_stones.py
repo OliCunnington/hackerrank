@@ -5,6 +5,7 @@ import os
 import random
 import re
 import sys
+import itertools
 
 #
 # Complete the 'stones' function below.
@@ -17,12 +18,9 @@ import sys
 #
 
 def stones(n, a, b):
-    _as = [a for a in range(n-1)]
-    _bs = [b for b in range(n-1)] # -1 since we dont care about the starting 0...
-    
-    ### what the fuck is the thing i need here? not permutations... not dot product
-    ### cross product?!
-    ### _as X _bs... ?
+    combined = [a, b]
+    # print(list(itertools.product(combined, repeat=n-1)))
+    return sorted(set(map(sum, list(itertools.product(combined, repeat=n-1)))))
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
