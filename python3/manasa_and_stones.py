@@ -18,17 +18,21 @@ import itertools
 #
 
 def stones(n, a, b):
-    combined = [a, b]
+    # combined = [a, b]
     # print(list(itertools.product(combined, repeat=n-1)))
-    prods = list(itertools.product(combined, repeat=n-1))
-    sums = set(map(sum, prods))
-    res = sorted(sums)
-    print(res)
-    return res
+    # prods = list(itertools.product(combined, repeat=n-1))
+    # sums = set(map(sum, prods))
+    # res = sorted(sums)
+    # print(res)
+    res = []
+    for i in range(n):
+        res.append(a * i + b * (n-1 - i))
+    return sorted(res)
     # return sorted(set(map(sum, list(itertools.product(combined, repeat=n-1)))))
 
+
 if __name__ == '__main__':
-    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     T = int(input().strip())
 
@@ -38,10 +42,10 @@ if __name__ == '__main__':
         a = int(input().strip())
 
         b = int(input().strip())
-        print(n, a, b)
-        result = stones(n, a, b)
-        print("done")
-        print(' '.join(map(str, result)))
-        # fptr.write('\n')
 
-    # fptr.close()
+        result = stones(n, a, b)
+
+        fptr.write(' '.join(map(str, result)))
+        fptr.write('\n')
+
+    fptr.close()
