@@ -27,7 +27,7 @@ def stones(n, a, b):
     res = []
     for i in range(n):
         res.append(a * i + b * (n-1 - i))
-    return sorted(res)
+    return sorted(set(res))
     # return sorted(set(map(sum, list(itertools.product(combined, repeat=n-1)))))
 
 
