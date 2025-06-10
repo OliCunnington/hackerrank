@@ -5,7 +5,7 @@ import os
 import random
 import re
 import sys
-
+import itertools
 #
 # Complete the 'beautifulTriplets' function below.
 #
@@ -22,7 +22,12 @@ def beautifulTriplets(d, arr):
     # Write your code here
     # make triplets, map test across
     # ascending list, < not <=
-    pass
+    u_arr = set(arr)
+    # print(u_arr)
+    trips = list(itertools.combinations(u_arr, 3))
+    # print(trips)
+    b_trips = [testBeat(d, t) for t in trips]
+    return b_trips.count(True)
     
 
 if __name__ == '__main__':
