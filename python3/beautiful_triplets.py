@@ -22,9 +22,12 @@ def beautifulTriplets(d, arr):
     # Write your code here
     # make triplets, map test across
     # ascending list, < not <=
-    u_arr = set(arr)
+    # u_arr = set(arr)
     # print(u_arr)
-    trips = list(itertools.combinations(u_arr, 3))
+    
+    return len([1 for x in itertools.combinations(arr, 3) if testBeat(d, x)])
+    
+    trips = list(itertools.combinations(arr, 3))
     # print(trips)
     b_trips = [testBeat(d, t) for t in trips]
     return b_trips.count(True)
