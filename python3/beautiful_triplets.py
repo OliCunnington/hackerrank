@@ -24,6 +24,9 @@ def beautifulTriplets(d, arr):
     # ascending list, < not <=
     # u_arr = set(arr)
     # print(u_arr)
+    # need to make trips with just later numbers...
+    # for i in range(len(arr)):
+    # trips_from(arr[i], arr[i+1::]) ?
     
     return len([1 for x in itertools.combinations(arr, 3) if testBeat(d, x)])
     
