@@ -27,9 +27,11 @@ def beautifulTriplets(d, arr):
     # need to make trips with just later numbers...
     # for i in range(len(arr)):
     # trips_from(arr[i], arr[i+1::]) ?
-    
+    # zip()
     return len([1 for x in itertools.combinations(arr, 3) if testBeat(d, x)])
-    
+    # time out on large lists
+    # need to only take elements later in list that != element...
+    # can i do with set and multiply by... * count if count > 1 (??) 
     trips = list(itertools.combinations(arr, 3))
     # print(trips)
     b_trips = [testBeat(d, t) for t in trips]
