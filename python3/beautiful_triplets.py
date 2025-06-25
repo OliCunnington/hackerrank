@@ -16,6 +16,7 @@ import itertools
 #
 
 def testBeat(d, arr):
+    print(arr)
     return arr[0] < arr[1] < arr[2] and arr[1] - arr[0] == d and arr[2] - arr[1] == d
 
 def beautifulTriplets(d, arr):
@@ -41,20 +42,23 @@ def beautifulTriplets(d, arr):
             counts[i] += 1
         else:
             counts[i] = 1
-    trips = list(itertools.combinations(set(arr), 3))
+    trips = []
+    ## need to do just trips from after?
+    for i in range(len(arr)-2):
+        trips += trips_from(arr[i], doubles_from(arr[i+1], arr[i+2:]))
+    # trips = list(itertools.combinations(set(arr), 3))
     summat = 0
+    # print(trips)
     for t in trips:
         if testBeat(d, t):
-            summat += 1 * counts[t[0]] * counts[t[1]] * counts[t[2]]
+            summat += 1 # * counts[t[0]] * counts[t[1]] * counts[t[2]]
     return summat
     
-    ## need to do just trips from after?
-    # for i in range(len(arr)-2):
-    #   trips_from(arr[i], doubles_from(arr[i+1], arr[i+2:]))
-    # trips_from(n, arr):
-    #   return [[n, a[0], a[1]] for a in arr]
-    # doubles_from(n, arr):
-    #   return [[n, i] for i in arr]
+def trips_from(n, arr):
+    return [[n, a[0], a[1]] for a in arr]
+      
+def doubles_from(n, arr):
+    return [[n, i] for i in arr]
     
 
 if __name__ == '__main__':
