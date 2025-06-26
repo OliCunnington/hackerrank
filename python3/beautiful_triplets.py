@@ -43,6 +43,7 @@ def beautifulTriplets(d, arr):
         else:
             counts[i] = 1
     trips = []
+    arr = list(set(arr))
     ## need to do just trips from after?
     for i in range(len(arr)-2):
         trips += trips_from(arr[i], doubles_from(arr[i+1], arr[i+2:]))
@@ -51,7 +52,7 @@ def beautifulTriplets(d, arr):
     # print(trips)
     for t in trips:
         if testBeat(d, t):
-            summat += 1 # * counts[t[0]] * counts[t[1]] * counts[t[2]]
+            summat += 1  * counts[t[0]] * counts[t[1]] * counts[t[2]]
     return summat
     
 def trips_from(n, arr):
