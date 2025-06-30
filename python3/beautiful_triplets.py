@@ -16,7 +16,9 @@ import itertools
 #
 
 def beautifulTriplets(d, arr):
-    
+    # make all doubles from arr[1:] where dou[1] - dou[0] == d and dou[1] > dou[0]
+    # make all triples from filtered doubles 
+    # return len([1 for n in arr for m in list(filter(lamda x -> x[0] > n, dou)) where m[0] - n == d)
     counts = {}
     for i in arr:
         if i in counts.keys():
@@ -27,26 +29,30 @@ def beautifulTriplets(d, arr):
     trips = []
     arr = list(set(arr))
     for i in range(len(arr)-2):
-        trips += trips_from(arr[i], doubles_from(arr[i+1], arr[i+2:]))
+        trips += trips_from(d, arr[i], doubles_from(d, arr[i+1], arr[i+2:]))
+    print("trips: ", trips)
     
     summat = 0
     for t in trips:
-        if testBeat(d, t):
-            summat += 1  * counts[t[0]] * counts[t[1]] * counts[t[2]]
+        summat += 1  * counts[t[0]] * counts[t[1]] * counts[t[2]]
     return summat
     
-def trips_from(n, arr):
-    return [[n, a[0], a[1]] for a in arr]
+def trips_from(d, n, arr):
+    print("trips_from: ", arr, "\t", n, "\t", d)
+    trips = [[n, a[0], a[1]] for a in arr if a[0] - n == d]
+    print("trips_from res: ", trips, d, n, arr)
+    return trips
       
-def doubles_from(n, arr):
-    if len(arr) > 1:
-        return [[n, i] for i in arr] + doubles_from(arr[0], arr[1:])
-    return [[n, i] for i in arr]
-    
-def testBeat(d, arr):
-    # print(arr)
-    return arr[0] < arr[1] < arr[2] and arr[1] - arr[0] == d and arr[2] - arr[1] == d
-
+def doubles_from(d, n, arr):
+    # if len(arr) > 1:
+    #     #probably hitting recursion depth...
+    #     return [[n, i] for i in arr if i - n == d] + doubles_from(d, arr[0], arr[1:])
+    # return [[n, i] for i in arr if i - n == d]
+    doubles = []
+    for j in range(len(arr)-1):
+        doubles += [[n, i] for i in arr[j:] if i - n == d]
+    print("doubles_from res: ", doubles, d, n, arr)
+    return doubles
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
