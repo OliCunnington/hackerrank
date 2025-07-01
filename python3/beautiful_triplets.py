@@ -28,9 +28,10 @@ def beautifulTriplets(d, arr):
     
     trips = []
     arr = list(set(arr))
+    ds = all_doulbes(d, arr)
     for i in range(len(arr)-2):
-        trips += trips_from(d, arr[i], doubles_from(d, arr[i+1], arr[i+2:]))
-    print("trips: ", trips)
+        trips += trips_from(d, arr[i], [_d for _d in ds if _d[0] > arr[i]])
+    # print("trips: ", trips)
     
     summat = 0
     for t in trips:
@@ -38,21 +39,20 @@ def beautifulTriplets(d, arr):
     return summat
     
 def trips_from(d, n, arr):
-    print("trips_from: ", arr, "\t", n, "\t", d)
+    # print("trips_from: ", arr, "\t", n, "\t", d)
     trips = [[n, a[0], a[1]] for a in arr if a[0] - n == d]
-    print("trips_from res: ", trips, d, n, arr)
+    # print("trips_from res: ", trips, d, n, arr)
     return trips
-      
-def doubles_from(d, n, arr):
-    # if len(arr) > 1:
-    #     #probably hitting recursion depth...
-    #     return [[n, i] for i in arr if i - n == d] + doubles_from(d, arr[0], arr[1:])
-    # return [[n, i] for i in arr if i - n == d]
-    doubles = []
-    for j in range(len(arr)-1):
-        doubles += [[n, i] for i in arr[j:] if i - n == d]
-    print("doubles_from res: ", doubles, d, n, arr)
-    return doubles
+
+
+def all_doulbes(d, arr):
+    ds = []
+    for i in range(len(arr)):
+        for j in arr[i:]:
+            if j - arr[i] == d:
+                ds.append([arr[i], j]) 
+    return(ds)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
