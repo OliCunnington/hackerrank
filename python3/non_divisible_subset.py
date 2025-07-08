@@ -16,23 +16,21 @@ import sys
 #
 
 def nonDivisibleSubset(k, s):
-    # s = list(set(s))
-    # Write your code here
-    ## take s[0], remove every element that sums to multiple of k
+    s = list(set(s))
     
-    # for i in s[1:]:
-    #   s.remove(i) if sum(s[0], i) % k == 0
+    s_c = s.copy()
+    s_s = []
     
-    ## take s[1] ...
-    ## repear until s[-1]
+    for j in range(len(s_c) - 1):
+        for i in s_c[j+1:]:
+            if (s_c[j] + i) % k == 0:
+                s_c.remove(i)
+        s_s.append(len(s_c))
+        s_c = s.copy()
     
-    ##  elements before will sum to non-mult of k
+    # Kekw, i need to check each other element in list against others...
     
-    ## whut uboot ze others?!
-    ## like, removed elements
-    ## do it again starting with s[1] ? ignore s[0]
-    ## do it again
-    ## return max len
+    return max(s_s)
     
     
     
