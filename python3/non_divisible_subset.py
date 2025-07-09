@@ -30,6 +30,8 @@ def nonDivisibleSubset(k, s):
     
     # Kekw, i need to check each other element in list against others...
     
+    # how the fuck does for x in as loop interact with as.remove(x) ?!
+    
     return max(s_s)
     
     
