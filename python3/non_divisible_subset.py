@@ -46,10 +46,11 @@ def nonDivisibleSubset(k, s):
 
 def can_insert(k, i, s):
     for j in s:
-        if i + j % k == 0:
+        if (i + j) % k == 0:
             return False
     return True
-    
+
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
