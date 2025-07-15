@@ -35,9 +35,9 @@ def nonDivisibleSubset(k, s):
     # i need to construct the lists, not remove from copy
     # this will allow me to add an element if NONE (a+b) % k == 0
     
-    for i in range(len(s) - 1):
+    for i in range(len(s)):
         s_s.append([s[i]])
-        for j in s[i+1:]:
+        for j in s:
             if can_insert(k, j, s_s[i]):
                 s_s[i].append(j)
     
@@ -46,7 +46,7 @@ def nonDivisibleSubset(k, s):
 
 def can_insert(k, i, s):
     for j in s:
-        if (i + j) % k == 0:
+        if (i + j) % k == 0 or i == j:
             return False
     return True
 
