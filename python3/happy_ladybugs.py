@@ -16,6 +16,15 @@ import sys
 #
 
 def happyLadybugs(b):
+
+    # should test if it is "happy" first
+    # if arr[0] != arr[1]:
+    #   return false
+    # else:
+    #   for i in arr[1:-1]:
+    #       if i != i +/- 1:
+    #            poo poo
+
     # get letter counts
     counts = {}
     has_space = False
@@ -26,7 +35,7 @@ def happyLadybugs(b):
             counts[i] += 1
         else:
             counts[i] = 1
-    
+
     if 1 in counts.values() or not has_space:
         # print("NO")
         return "NO"
