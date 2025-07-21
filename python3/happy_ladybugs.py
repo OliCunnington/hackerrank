@@ -17,15 +17,9 @@ import sys
 
 def happyLadybugs(b):
 
-    # should test if it is "happy" first
-    # if arr[0] != arr[1]:
-    #   return false
-    # else:
-    #   for i in arr[1:-1]:
-    #       if i != i +/- 1:
-    #            poo poo
-
-    # get letter counts
+    if len(b) < 2 or is_happy(b): 
+        return "YES"
+    
     counts = {}
     has_space = False
     for i in b:
@@ -42,6 +36,15 @@ def happyLadybugs(b):
     # print("YES")    
     return "YES"
 
+def is_happy(b):
+    if b[0] != b[1]:
+        return False
+    for i in range(1, len(b)-1):
+        if b[i] != b[i+1] and b[i] != b[i-1]:
+            return False
+    return b[-1] == b[-2]
+
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
