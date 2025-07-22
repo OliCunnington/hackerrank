@@ -17,7 +17,9 @@ import sys
 
 def happyLadybugs(b):
 
-    if len(b) < 2 or is_happy(b): 
+    if len(b) < 2:
+        return "NO" if "_" not in b else "YES" 
+    elif is_happy(b): 
         return "YES"
     
     counts = {}
@@ -31,9 +33,7 @@ def happyLadybugs(b):
             counts[i] = 1
 
     if 1 in counts.values() or not has_space:
-        # print("NO")
         return "NO"
-    # print("YES")    
     return "YES"
 
 def is_happy(b):
