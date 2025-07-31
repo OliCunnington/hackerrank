@@ -19,15 +19,11 @@ def separateNumbers(s):
     num = [int(s[0])]
     i = 1
     while i < len(s):
-        # s[i:].startswith(s[:i]?)
         if s.startswith(str(num[-1]+1), i):
             num += [num[-1]+1]
             i += len(str(num[-1]))
-        # now fucken... i + len(strnum[-1])
-        # so while loop? 
         else:
-            # i need to reset num with an extra digit...
-            if i > len(s)/2:
+            if i+1 > len(s[i:]):
                 print("NO")
                 return
             num = [int(str(num[0]) + s[i])]
