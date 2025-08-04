@@ -23,7 +23,7 @@ def separateNumbers(s):
             num += [num[-1]+1]
             i += len(str(num[-1]))
         else:
-            if i+1 > len(s[i:]):
+            if i > math.ceil(len(s)/2):
                 print("NO")
                 return
             num = [int(str(num[0]) + s[i])]
